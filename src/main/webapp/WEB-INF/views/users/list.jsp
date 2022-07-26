@@ -9,7 +9,7 @@
 	<c:when test="${ses.grade == 99 }">
 <div class="row">
 	<div class="col-sm-12 col-md-6">
-		<h2>Member List</h2>
+		<h2>User List</h2>
 	</div>
 	<div class="col-sm-12 col-md-6">
 		<form class="d-flex" action="/users/list" method="get">

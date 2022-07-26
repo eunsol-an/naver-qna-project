@@ -5,7 +5,7 @@
 <jsp:include page="../common/nav.jsp" />
 
 <div class="container mt-3">
-	<h2>Member Detail</h2>
+	<h2>User Detail</h2>
 	<div class="card mt-4">
 		<div class="card-body p-5">
 			<h4 class="card-title" id="emVal">${uvo.email }</h4>
