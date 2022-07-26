@@ -10,6 +10,6 @@ import lombok.ToString;
 public class UsersVO {
 	private String email;
 	private String pwd;
-	private String nick_name;
-	private String reg_at;
+	private String nickName;
+	private String regAt;
 }
