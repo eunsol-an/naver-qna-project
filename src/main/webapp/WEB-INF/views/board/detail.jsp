@@ -47,12 +47,11 @@ data-bs-toggle="modal" data-bs-target="#myModalThumb">
 			<div class="d-flex mb-3">
 			<c:forEach var="fvo" items="${bdto.fileList }">
 			<c:choose>
-				<c:when test="${fvo.fileType == 1 }">
+				<c:when test="${fvo ne null }">
 				    <div class="p-2">
 			    		<img src="/upload/${fn:replace(fvo.saveDir, '\\', '/') }/${fvo.uuid }_th_${fvo.fileName }" 
 			    		class="rounded th-img" style="cursor:pointer;">
 				    </div>
-				
 				</c:when>
 				<c:otherwise></c:otherwise>
 			</c:choose>
