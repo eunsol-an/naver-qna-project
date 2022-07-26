@@ -1,10 +1,12 @@
 package com.naver.kin.handler;
 
-import java.util.List;
-
 import com.naver.kin.domain.PagingVO;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class PagingHandler {
 	private int startPage;
 	private int endPage;
