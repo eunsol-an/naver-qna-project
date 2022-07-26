@@ -147,4 +147,5 @@ data-bs-toggle="modal" data-bs-target="#myModalMod">
 	}
 </script>
 <script src="/resources/js/board.detail.js"></script>
+<script src="/resources/js/board.comment.js"></script>
 <jsp:include page="../common/footer.jsp" />
