@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myweb.www.repository.UsersDAO">
+	<sql id="wh_email">
+		WHERE email = #{email}
+	</sql>
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="or">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="or">
+						<choose>
+						<when test="type == 'e'.toString()">
+							email LIKE CONCAT('%', #{kw}, '%')
+						</when>
+						<when test="type == 'n'.toString()">
+							nick_name LIKE CONCAT('%', #{kw}, '%')
+						</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	<insert id="insert" parameterType="uvo">
+		INSERT INTO users(
+					email
+					, pwd
+					, nick_name)
+		VALUES (#{email}
+				, #{pwd}
+				, #{nickName})
+	</insert>
+	<select id="selectOne" parameterType="uvo" resultType="uvo">
+		SELECT email
+			, nick_name
+			, grade
+		FROM users
+		<include refid="wh_email"/>
+		AND pwd = #{pwd}
+	</select>
+	<select id="selectList" resultType="uvo" parameterType="pgvo">
+		SELECT a.email
+			, nick_name
+			, reg_at
+			, grade
+		FROM (
+			SELECT email 
+			FROM users 
+			WHERE 1 = 1
+			<include refid="search" />
+			ORDER BY reg_at DESC
+			LIMIT #{pageStart}
+				, #{qty}
+		) a LEFT JOIN users b
+		ON a.email = b.email
+	</select>
+	<select id="selectDetail" resultType="uvo" parameterType="string">
+		SELECT * 
+		FROM users 
+		<include refid="wh_email"/>
+	</select>
+	<select id="selectEmail" parameterType="string" resultType="int">
+		SELECT count(email) 
+		FROM users
+		<include refid="wh_email"></include>
+	</select>
+	<select id="selectTotalCount" resultType="int">
+		SELECT count(email) 
+		FROM users 
+		WHERE 1 = 1
+		<include refid="search" />
+	</select>
+	<update id="update" parameterType="uvo">
+		UPDATE users 
+		SET grade = #{grade}
+		, nick_name = #{nickName}
+		, pwd = #{pwd}
+		<include refid="wh_email"/>
+	</update>
+	<delete id="delete" parameterType="string">
+		DELETE FROM users
+		<include refid="wh_email"/>
+	</delete>
+</mapper>
