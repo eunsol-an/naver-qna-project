@@ -25,10 +25,12 @@ import com.naver.kin.domain.UsersVO;
 import com.naver.kin.handler.PagingHandler;
 import com.naver.kin.service.UsersService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/users/*")
 public class UsersController {
-	private static Logger log = LoggerFactory.getLogger(UsersController.class);
 	
 	@Inject
 	private UsersService usv;

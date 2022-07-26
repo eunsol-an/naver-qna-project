@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.kin.repository.BoardDAO">
+	<sql id="wh_bno">
+		WHERE bno = #{bno}
+	</sql>
+	<sql id="search">
+		<if test="type != null">
+		<trim prefix="and (" suffix=")" prefixOverrides="or">
+			<foreach collection="typeToArray" item="type">
+			<trim prefix="or">
+				<choose>
+					<when test="type == 't'.toString()">
+						title LIKE CONCAT('%', #{kw}, '%')
+					</when>
+					<when test="type == 'w'.toString()">
+						writer LIKE CONCAT('%', #{kw}, '%')
+					</when>	
+					<when test="type == 'c'.toString()">
+						description LIKE CONCAT('%', #{kw}, '%')
+					</when>		
+				</choose>
+			</trim>
+			</foreach>
+		</trim>
+		</if>
+	</sql>
+	<insert id="insert" parameterType="bvo">
+		INSERT INTO board (
+					category
+					, title
+					, writer
+					, description
+					, file_count)
+		VALUES (#{category}
+				, #{title}
+				, #{writer}
+				, #{description}
+				, #{fileCount})
+	</insert>
+	<select id="selectList" resultType="bvo" parameterType="pgvo">
+		SELECT a.bno
+			, category
+			, title
+			, writer
+			, read_count
+			, cmt_qty
+			, file_count
+			, mod_at
+		FROM (
+			SELECT bno 
+			FROM board 
+			WHERE bno > 0 
+			<include refid="search" />
+			ORDER BY bno DESC
+			LIMIT #{pageStart}, #{qty}
+		) a LEFT JOIN board b 
+		ON a.bno = b.bno
+	</select>
+	<select id="selectOne" parameterType="long" resultType="bvo">
+		SELECT * 
+		FROM board
+		<include refid="wh_bno"/>
+	</select>
+	<select id="selectTotalCount" resultType="int" parameterType="pgvo">
+		SELECT count(bno) 
+		FROM board 
+		WHERE bno > 0
+		<include refid="search" />
+	</select>
+	<select id="selectLastBno" resultType="long">
+		SELECT max(bno) 
+		FROM board
+	</select>
+	<update id="update" parameterType="bvo">
+		UPDATE board 
+		SET category = #{category}
+			, title = #{title}
+			, description = #{description}
+			, file_count = #{fileCount}
+			, mod_at = now()
+		<include refid="wh_bno"/>
+	</update>
+	<update id="updateReadCount">
+		UPDATE board 
+		SET read_count = read_count + #{i}
+		WHERE bno = #{bno}
+	</update>
+	<update id="updateCmtQty">
+		UPDATE board 
+		SET cmt_qty = cmt_qty + #{i}
+		WHERE bno = #{bno}
+	</update>
+	<delete id="delete" parameterType="long">
+		DELETE FROM board
+		<include refid="wh_bno"/>
+	</delete>
+</mapper>
