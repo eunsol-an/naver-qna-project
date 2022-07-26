@@ -1,5 +1,8 @@
 package com.naver.kin.handler;
 
+import java.util.List;
+
+import com.naver.kin.domain.CommentVO;
 import com.naver.kin.domain.PagingVO;
 
 import lombok.Getter;
@@ -14,6 +17,7 @@ public class PagingHandler {
 	
 	private int totalCount;
 	private PagingVO pgvo;
+	private List<CommentVO> cmtList;
 	
 	public PagingHandler(PagingVO pgvo, int totalCount) {
 		this.pgvo = pgvo;
@@ -30,5 +34,10 @@ public class PagingHandler {
 		
 		this.prev = startPage > 1;
 		this.next = endPage < realEndPage;
+	}
+	
+	public PagingHandler(List<CommentVO> cmtList, PagingVO pgvo, int totalCount) {
+		this(pgvo, totalCount);
+		this.cmtList = cmtList;
 	}
 }
