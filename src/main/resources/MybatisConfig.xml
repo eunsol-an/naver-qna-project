@@ -11,5 +11,6 @@
 	<typeAlias type="com.naver.kin.domain.PagingVO" alias="pgvo"/>
 	<typeAlias type="com.naver.kin.domain.BoardVO" alias="bvo"/>
 	<typeAlias type="com.naver.kin.domain.FileVO" alias="fvo"/>
+	<typeAlias type="com.naver.kin.domain.CommentVO" alias="cvo"/>
 </typeAliases>
 </configuration>
