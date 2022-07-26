@@ -11,5 +11,6 @@ public class UsersVO {
 	private String email;
 	private String pwd;
 	private String nickName;
+	private int grade;
 	private String regAt;
 }
