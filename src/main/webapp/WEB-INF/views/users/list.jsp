@@ -45,7 +45,7 @@
 			<c:forEach var="uvo" items="${list }">
 				<tr>
 					<td>${uvo.email }</td>
-					<td><a href="/users/detail?email=${uvo.email }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty }&type=${pgn.pgvo.type }&kw=${pgn.pgvo.kw }">${mvo.nickName }</a></td>
+					<td><a href="/users/detail?email=${uvo.email }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty }&type=${pgn.pgvo.type }&kw=${pgn.pgvo.kw }">${uvo.nickName }</a></td>
 					<td>${uvo.regAt }</td>
 					<td>${uvo.grade }</td>
 				</tr>
