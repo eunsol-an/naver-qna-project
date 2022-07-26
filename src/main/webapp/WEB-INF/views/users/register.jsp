@@ -4,7 +4,7 @@
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/nav.jsp"/>
 
-<div class="container mt-3">
+<div class="container mt-3 col-sm-12 col-lg-4">
   <h2>회원가입</h2>
   <form action="/users/register" method="post">
     <div class="mb-3 mt-3">

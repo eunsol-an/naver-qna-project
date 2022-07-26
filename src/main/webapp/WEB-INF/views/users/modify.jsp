@@ -4,7 +4,7 @@
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/nav.jsp"/>
 
-<div class="container mt-3">
+<div class="container mt-3 col-sm-12 col-lg-4">
   <h2>User Modify</h2>
   <form action="/users/modify" method="post">
   <input type="hidden" name="pageNo" value="${pgvo.pageNo }">
