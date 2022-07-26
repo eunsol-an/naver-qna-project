@@ -9,5 +9,6 @@
 <typeAliases>
 	<typeAlias type="com.naver.kin.domain.UsersVO" alias="uvo"/>
 	<typeAlias type="com.naver.kin.domain.PagingVO" alias="pgvo"/>
+	<typeAlias type="com.naver.kin.domain.BoardVO" alias="bvo"/>
 </typeAliases>
 </configuration>
