@@ -70,7 +70,7 @@
 		WHERE bno > 0
 		<include refid="search" />
 	</select>
-	<select id="selectLastPno" resultType="long">
+	<select id="selectLastBno" resultType="long">
 		SELECT max(bno) 
 		FROM board
 	</select>
