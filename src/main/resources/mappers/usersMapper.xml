@@ -18,6 +18,9 @@
 						<when test="type == 'n'.toString()">
 							nick_name LIKE CONCAT('%', #{kw}, '%')
 						</when>
+						<when test="type == 'g'.toString()">
+							grade like concat('%', #{kw}, '%')
+						</when>
 						</choose>
 					</trim>
 				</foreach>
