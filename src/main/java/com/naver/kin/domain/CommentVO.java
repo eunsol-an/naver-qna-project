@@ -15,9 +15,11 @@ public class CommentVO {
 	private String regAt;
 	private String modAt;
 	
+	public CommentVO() {}
+	
 	// remove
-		public CommentVO(long cno, long bno) {
-			this.cno = cno;
-			this.bno = bno;
-		}
+	public CommentVO(long cno, long bno) {
+		this.cno = cno;
+		this.bno = bno;
+	}
 }
