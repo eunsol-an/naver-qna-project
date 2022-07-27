@@ -31,7 +31,7 @@
     </div>
     <div class="mb-3">
       <label for="files">File Attach:</label>
-      <input type="file" class="form-control" style="display:none;" id="files" name="fileAttached" multiple>
+      <input type="file" class="form-control" style="display:none;" id="files" name="fileAttached" accept="image/jpg, image/jpeg, image/png, image/gif" multiple>
       <div class="d-grid">
       <button type="button" id="attachTrigger" class="btn btn-outline-primary btn-block d-block">Attach Files</button>
       </div>
