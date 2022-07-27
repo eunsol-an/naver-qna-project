@@ -15,7 +15,6 @@
 				<li><a href="/" class="nav-link px-2 link-secondary">홈</a></li>
 				<li><a href="/board/list" class="nav-link px-2 link-dark">Q&A</a></li>
 				<li><a href="#" class="nav-link px-2 link-dark">답변하기</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">지식기부</a></li>
 			</ul>
 
 			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -39,7 +38,7 @@
 							<li><a class="dropdown-item" href="/users/list">회원관리</a></li>
 							</c:if>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+							<li><a class="dropdown-item" href="/users/logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:when>
