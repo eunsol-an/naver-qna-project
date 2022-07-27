@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.kin.repository.CommentDAO">
+	<insert id="insert" parameterType="cvo">
+		INSERT INTO comment (
+					bno
+				, writer
+				, content)
+		VALUES (#{bno}
+			, #{writer}
+			, #{content})
+	</insert>
+	<select id="selectList" resultType="cvo">
+		SELECT a.cno
+			, writer
+			, content
+			, mod_at
+		FROM (SELECT cno 
+				FROM comment
+				WHERE bno = #{bno}
+				ORDER BY cno DESC
+				LIMIT #{pgvo.pageStart}, #{pgvo.qty}
+			) a LEFT JOIN comment b
+			ON a.cno = b.cno
+	</select>
+	<select id="selectTotalCount" resultType="int">
+		SELECT count(cno) 
+		FROM comment 
+		WHERE bno = #{bno}
+	</select>
+	<select id="selectPno" parameterType="long" resultType="long">
+		SELECT bno 
+		FROM comment 
+		WHERE cno = #{cno}
+	</select>
+	<update id="update" parameterType="cvo">
+		UPDATE comment 
+		SET content = #{content}
+			, mod_at = now()
+		WHERE cno = #{cno}
+	</update>
+	<delete id="delete" parameterType="long">
+		DELETE FROM comment 
+		WHERE cno = #{cno}
+	</delete>
+	<delete id="deleteAll" parameterType="long">
+		DELETE FROM comment 
+		WHERE bno = #{bno}
+	</delete>
+</mapper>
