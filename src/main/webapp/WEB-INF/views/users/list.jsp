@@ -9,7 +9,7 @@
 	<c:when test="${ses.grade == 99 }">
 <div class="row">
 	<div class="col-sm-12 col-md-6">
-		<h2>User List</h2>
+		<h2>회원 목록</h2>
 	</div>
 	<div class="col-sm-12 col-md-6">
 		<form class="d-flex" action="/users/list" method="get">
@@ -19,15 +19,15 @@
 			<c:set value="${pgn.pgvo.type }" var="typed" />
 				<select class="form-select" name="type">
 				  <option ${typed eq null ? 'selected':'' }>선택</option>
-				  <option value="eng" ${typed eq 'eng' ? 'selected':'' }>All</option>
-				  <option value="e" ${typed eq 'e' ? 'selected':'' }>Email</option>
-				  <option value="n" ${typed eq 'n' ? 'selected':'' }>Nickname</option>
-				  <option value="g" ${typed eq 'g' ? 'selected':'' }>Grade</option>
-				  <option value="en" ${typed eq 'en' ? 'selected':'' }>Email or Nickname</option>
+				  <option value="eng" ${typed eq 'eng' ? 'selected':'' }>전체</option>
+				  <option value="e" ${typed eq 'e' ? 'selected':'' }>이메일</option>
+				  <option value="n" ${typed eq 'n' ? 'selected':'' }>닉네임</option>
+				  <option value="g" ${typed eq 'g' ? 'selected':'' }>등급</option>
+				  <option value="en" ${typed eq 'en' ? 'selected':'' }>이메일+닉네임</option>
 				</select>
-				<input class="form-control me-2" type="search" placeholder="Search"
+				<input class="form-control me-2" type="search" 
 					aria-label="Search" name="kw" value="${pgn.pgvo.kw }">
-				<button class="btn btn-outline-success" type="submit">Search</button>
+				<button class="btn btn-outline-success" type="submit">검색</button>
 			</div>
 		</form>
 	</div>
@@ -35,10 +35,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Email</th>
-				<th>Nickname</th>
-				<th>Reg At</th>
-				<th>Grade</th>
+				<th>이메일</th>
+				<th>닉네임</th>
+				<th>가입일자</th>
+				<th>등급</th>
 			</tr>
 		</thead>
 		<tbody>
