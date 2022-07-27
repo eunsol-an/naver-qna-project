@@ -6,7 +6,7 @@
 
 <c:set var="bvo" value="${bdto.bvo }" />
 <div class="container mt-3">
-  <h2>Board Modify</h2>
+  <h2>질문 수정</h2>
   <form action="/board/modify" method="post" enctype="multipart/form-data">
   <input type="hidden" name="bno" value="${bvo.bno }">
   <input type="hidden" name="pageNo" value="${pgvo.pageNo }">
@@ -14,30 +14,30 @@
   <input type="hidden" name="type" value="${pgvo.type }">
   <input type="hidden" name="kw" value="${pgvo.kw }">
     <div class="mb-3 mt-3">
-      <label for="category">Category:</label>
+      <label for="category">카테고리:</label>
    	  <input type="text" class="form-control" id="category" placeholder="Enter category" name="category" value="${bvo.category }">
     </div>
     <div class="mb-3">
-      <label for="pname">Product Name:</label>
+      <label for="pname">제목:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="${bvo.title }">
     </div>
     <div class="mb-3">
-      <label for="writer">Writer:</label>
+      <label for="writer">작성자:</label>
       <input type="text" class="form-control" id="writer" placeholder="Enter writer" name="writer" value="${bvo.writer }" readonly>
     </div>
     <div class="mb-3">
-      <label for="description">Description:</label>
+      <label for="description">질문:</label>
       <textarea class="form-control" id="description" placeholder="Enter description" name="description">${bvo.description }</textarea>
     </div>
     <div class="mb-3">
-      <label for="files">File Attach:</label>
+      <label for="files">파일첨부:</label>
       <input type="file" class="form-control" style="display:none;" id="files" name="fileAttached" accept="image/jpg, image/jpeg, image/png, image/gif" multiple>
       <div class="d-grid">
       <button type="button" id="attachTrigger" class="btn btn-outline-primary btn-block d-block">Attach Files</button>
       </div>
       <div class="my-3" id="fileZone"></div>
     </div>
-    <button type="submit" class="btn btn-primary" id="writeBtn">Modify</button>
+    <button type="submit" class="btn btn-primary" id="writeBtn">수정하기</button>
   </form>
 </div>
 <hr>

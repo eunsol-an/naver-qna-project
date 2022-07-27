@@ -25,7 +25,7 @@ if (document.getElementById('cmtSbmBtn') != null) {
     document.getElementById('cmtSbmBtn').addEventListener('click', (e) => {
         const cmtInputObj = document.getElementById('cmtText');
         if (cmtInputObj.value == null || cmtInputObj.value == '') {
-            alert('댓글 내용을 입력해 주세요!');
+            alert('답변 내용을 입력해 주세요!');
             cmtInputObj.focus();
             return false;
         }else {
@@ -36,7 +36,7 @@ if (document.getElementById('cmtSbmBtn') != null) {
             };
             postCommentToServer(cmtData).then(result => {
                 if (parseInt(result)) {
-                    alert('댓글이 등록되었습니다');
+                    alert('답변이 등록되었습니다');
                     cmtInputObj.value = "";
                 }
                 printCommentList();
@@ -144,7 +144,7 @@ document.addEventListener('click', (e) => {
         const cmtModInput = document.querySelector('.cmtModifiedText');
         const cmtTextVal = cmtModInput.value;
         if (cmtTextVal == null || cmtTextVal == '') {
-            alert('수정할 댓글 내용을 입력하세요!');
+            alert('수정할 답변 내용을 입력하세요!');
             cmtModInput.focus();
             return false;
         }else {
@@ -165,7 +165,7 @@ document.addEventListener('click', (e) => {
         const bnoVal = document.getElementById('bnoVal').innerText;
         commentDeleteToServer(cnoVal, bnoVal).then(result => {
             if (parseInt(result)) {
-                alert('댓글이 삭제되었습니다');
+                alert('답변이 삭제되었습니다');
             }
             printCommentList();
         });
